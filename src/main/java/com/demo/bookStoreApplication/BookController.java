@@ -46,14 +46,14 @@ public class BookController {
 	
 	//handler to Retrieve a specific book by ID.
 	@RequestMapping(path="/books/{id}" ,method=RequestMethod.GET)
-	public Book getBook(@PathVariable("id") int id)
+	public Book getBookById(@PathVariable("id") int id)
 	{
 		logger.info("Fetching book with id: {}", id);
 		try {
 			return bookService.getBookById(id);
 		} catch (Exception e) {
 			logger.error("Book not found with id: {}", id);
-			throw new BookNotFoundException("Book with id "+id+" not found!");
+			throw new BookNotFoundException("Book with id "+id+" not available!");
 		}
 		
 	}
